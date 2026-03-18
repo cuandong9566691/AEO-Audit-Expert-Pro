@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @keyframes breathe {
+      0% { opacity: 1; text-shadow: 0 0 2px rgba(231, 76, 60, 0.2); }
+      50% { opacity: 0.5; text-shadow: 0 0 10px rgba(231, 76, 60, 0.5); }
+      100% { opacity: 1; text-shadow: 0 0 2px rgba(231, 76, 60, 0.2); }
+    }
+    body { width: 330px; font-family: "Microsoft YaHei", sans-serif; padding: 15px; background: #fff; margin: 0; }
+    .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    #score { font-size: 32px; font-weight: bold; }
+    .stats-row { display: flex; justify-content: space-around; margin: 12px 0; background: #f8f9fa; padding: 12px; border-radius: 10px; border: 1px solid #eee; }
+    .stat-item { text-align: center; flex: 1; }
+    .label { font-size: 11px; color: #888; display: block; margin-bottom: 4px; }
+    #read-time { font-size: 18px; font-weight: bold; color: #e74c3c; animation: breathe 1.5s infinite; }
+    #quality-rank { font-size: 16px; font-weight: bold; }
+    .summary-section { padding: 12px; background: #fcfcfc; border-radius: 8px; border: 1px solid #e0e0e0; min-height: 100px; }
+    .summary-title { font-size: 13px; font-weight: bold; color: #333; margin-bottom: 8px; display: block; }
+    .item-box { margin-bottom: 12px; border-left: 3px solid #ffd700; padding: 5px 10px; background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+    /* VIP 按钮样式 */
+    .vip-footer { margin-top: 15px; text-align: center; }
+    .vip-btn { 
+      background: linear-gradient(45deg, #f1c40f, #f39c12);
+      color: white; border: none; padding: 8px 20px; border-radius: 20px;
+      font-size: 13px; font-weight: bold; cursor: pointer; width: 100%;
+      box-shadow: 0 4px 6px rgba(243, 156, 18, 0.3);
+      transition: transform 0.2s;
+    }
+    .vip-btn:hover { transform: scale(1.02); }
+    .warning-text { font-size: 11px; color: #e67e22; margin-top: 8px; display: none; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <strong style="font-size: 16px;">AEO 审计专家 <span style="font-size:10px; background:#eee; padding:2px 5px; border-radius:4px;">Pro</span></strong>
+    <div style="text-align:center;"><span id="score">--</span></div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-item"><span class="label">值得花费</span><span id="read-time">--</span></div>
+    <div class="stat-item"><span class="label">内容含金量</span><span id="quality-rank">--</span></div>
+  </div>
+  <div class="summary-section">
+    <span class="summary-title">📍 深度审计摘要：</span>
+    <div id="content-outline">正在扫描页面...</div>
+    <div id="warning-box" class="warning-text">⚠️ 检测到页面受到权限保护（如需登录），部分数据无法通过 AI 审计。</div>
+  </div>
+  <div class="vip-footer">
+    <button class="vip-btn" id="vip-scan">💎 开启 VIP 深度扫描</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
